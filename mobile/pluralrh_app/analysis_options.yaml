@@ -1,0 +1,7 @@
+# Regras de qualidade de código recomendadas pelo time do Flutter
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - web/**
+include: package:flutter_lints/flutter.yaml

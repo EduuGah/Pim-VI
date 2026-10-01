@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    [PESSOA 1] Projeto da API REST (ASP.NET Core)
+    Contém: controllers (endpoints), autenticação/autorização JWT,
+    serviços com as regras do sistema e o painel web (pasta wwwroot).
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PluralRH.Api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Valida os tokens JWT enviados no cabeçalho Authorization: Bearer <token> -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.*" />
+    <!-- Swagger: documentação interativa da API em /swagger -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- A API usa a camada de dados da Pessoa 2 -->
+    <ProjectReference Include="..\PluralRH.Data\PluralRH.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,230 @@
+/* -----------------------------------------------------------------------------
+   [PESSOA 1] Painel web: estilos
+
+   Fonte: Atkinson Hyperlegible, criada pelo Braille Institute para leitores
+   com baixa visão. Combina com o tema do sistema (inclusão) e é livre (OFL).
+   Elemento visual principal: o medidor de 10 blocos (cada bloco = 10%).
+----------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/atkinson-hyperlegible-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/atkinson-hyperlegible-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --tinta: #18202e;          /* texto principal */
+  --tinta-suave: #596273;    /* texto de apoio */
+  --fundo: #eef0f2;          /* fundo da página */
+  --papel: #ffffff;          /* painéis */
+  --linha: #d5d9df;          /* bordas e divisórias */
+  --linha-suave: #e7eaee;
+  --azul: #1c4a86;           /* cor principal (botões, links, medidor) */
+  --azul-escuro: #12345f;
+  --azul-claro: #e3ebf5;
+  --marcador: #ffe14d;       /* amarelo marca-texto: só para destacar */
+  --verde: #23633a;    --verde-claro: #e2efe5;
+  --ambar: #855600;    --ambar-claro: #f8ecd0;
+  --vermelho: #a3261c; --vermelho-claro: #f7e2df;
+  --cinza: #5f6672;    --cinza-claro: #eceef1;
+
+  --fonte: "Atkinson Hyperlegible", "Segoe UI", Arial, sans-serif;
+  --raio: 8px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--fonte);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--tinta);
+  background: var(--fundo);
+}
+h1, h2, h3 { margin: 0; line-height: 1.25; font-weight: 700; }
+a { color: var(--azul); }
+:focus-visible { outline: 3px solid var(--marcador); outline-offset: 2px; }
+.texto-apoio { color: var(--tinta-suave); }
+
+/* ============================== MEDIDOR ==============================
+   10 blocos, como a barra "████████░░ 80%" do esboço do projeto. */
+.medidor { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+.medidor-blocos { display: inline-grid; grid-template-columns: repeat(10, 9px); gap: 2px; }
+.medidor-blocos i { display: block; height: 14px; background: var(--linha-suave); border-radius: 1px; }
+.medidor-blocos i.cheio { background: var(--azul); }
+.medidor.completo .medidor-blocos i.cheio { background: var(--verde); }
+.medidor-valor { font-weight: 700; min-width: 3.2em; text-align: right; }
+
+/* Marca: medidor pequeno + nome */
+.marca { display: inline-flex; align-items: center; gap: 10px; color: var(--tinta); text-decoration: none; font-size: 20px; font-weight: 700; }
+.marca .medidor-blocos { grid-template-columns: repeat(10, 4px); gap: 1px; }
+.marca .medidor-blocos i { height: 18px; }
+
+/* ============================== LOGIN ============================== */
+.login { min-height: 100vh; display: grid; grid-template-columns: minmax(320px, 440px) minmax(280px, 400px); gap: 64px; align-content: center; justify-content: center; padding: 48px 24px; }
+.login-form h1 { font-size: 28px; margin: 40px 0 6px; }
+.login-form > p { margin: 0 0 28px; color: var(--tinta-suave); max-width: 36ch; }
+.login-exemplo { align-self: center; background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 24px 28px; }
+.login-exemplo h2 { font-size: 15px; margin-bottom: 4px; }
+.login-exemplo > p { margin: 0 0 18px; color: var(--tinta-suave); font-size: 14px; }
+.login-exemplo ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.login-exemplo li > span:first-child { display: block; margin-bottom: 6px; }
+.login-rodape { grid-column: 1 / -1; color: var(--tinta-suave); font-size: 13px; }
+
+/* =========================== FORMULÁRIOS =========================== */
+.campo { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.campo label { font-weight: 700; font-size: 14px; }
+.campo small { color: var(--tinta-suave); font-size: 13px; }
+input, select, textarea {
+  font: inherit; color: inherit; background: var(--papel);
+  border: 1px solid #b9c0ca; border-radius: 6px; padding: 9px 11px; width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--marcador); outline-offset: 0; border-color: var(--tinta); }
+textarea { min-height: 88px; resize: vertical; }
+.campo-marcar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.campo-marcar input { width: 18px; height: 18px; accent-color: var(--azul); }
+.colunas-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.erro-form { color: var(--vermelho); font-weight: 700; min-height: 22px; margin: 4px 0 0; }
+
+/* ============================== BOTÕES ============================== */
+.botao { font: inherit; font-weight: 700; border-radius: 6px; padding: 9px 18px; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
+.botao:disabled { opacity: .6; cursor: progress; }
+.botao-principal { background: var(--azul); color: #fff; }
+.botao-principal:hover { background: var(--azul-escuro); }
+.botao-secundario { background: var(--papel); color: var(--tinta); border-color: #b9c0ca; }
+.botao-secundario:hover { background: var(--fundo); }
+.botao-largo { width: 100%; padding: 12px; }
+/* Ações dentro das tabelas: texto simples, sem caixa */
+.acao { font: inherit; font-size: 14px; font-weight: 700; background: none; border: none; padding: 2px 0; color: var(--azul); cursor: pointer; }
+.acao:hover { text-decoration: underline; }
+.acao.perigo { color: var(--vermelho); }
+.botao-fechar { font: inherit; background: none; border: none; color: var(--tinta-suave); cursor: pointer; padding: 4px 8px; }
+
+/* ======================= BARRA SUPERIOR (MENU) ======================= */
+.barra-topo { background: var(--papel); border-bottom: 1px solid var(--linha); }
+.barra-topo-conteudo { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; gap: 36px; min-height: 64px; }
+.menu { display: flex; gap: 26px; flex: 1; }
+.menu a { color: var(--tinta-suave); text-decoration: none; padding: 4px 1px; }
+.menu a:hover { color: var(--tinta); }
+/* Item ativo: grifado com marca-texto */
+.menu a.ativo { color: var(--tinta); font-weight: 700; background: linear-gradient(transparent 58%, var(--marcador) 58%, var(--marcador) 92%, transparent 92%); }
+.conta { display: flex; align-items: center; gap: 14px; font-size: 14px; }
+.conta-nome { text-align: right; line-height: 1.3; }
+.conta-nome strong { display: block; }
+.conta-nome span { color: var(--tinta-suave); }
+
+.principal { max-width: 1240px; margin: 0 auto; padding: 32px 28px 64px; }
+.cabecalho-pagina { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.cabecalho-pagina h1 { font-size: 30px; letter-spacing: -.01em; }
+.cabecalho-pagina p { margin: 4px 0 0; color: var(--tinta-suave); max-width: 70ch; }
+.carregando { color: var(--tinta-suave); padding: 24px 0; }
+
+/* ============================== PAINÉIS ============================== */
+.painel { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 20px 24px; }
+.painel > h2 { font-size: 17px; margin-bottom: 4px; }
+.painel > .texto-apoio { margin: 0 0 16px; font-size: 14px; }
+.painel.tabela-painel { padding: 0; overflow-x: auto; }
+.grade { display: grid; grid-template-columns: 3fr 2fr; gap: 20px; margin-bottom: 20px; }
+.grade.metade { grid-template-columns: 1fr 1fr; }
+.secao-titulo { font-size: 22px; margin: 40px 0 16px; }
+.nota { color: var(--tinta-suave); font-size: 14px; margin: 16px 0 0; }
+
+/* Números de resumo: uma faixa única, dividida por linhas (sem "cartõezinhos") */
+.numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); margin: 0 0 20px; }
+.numeros > div { padding: 16px 20px; border-left: 1px solid var(--linha-suave); }
+.numeros > div:first-child { border-left: none; }
+.numeros dt { font-size: 14px; color: var(--tinta-suave); }
+.numeros dd { margin: 2px 0 0; font-size: 32px; font-weight: 700; line-height: 1.1; }
+.numeros small { display: block; font-size: 13px; color: var(--tinta-suave); margin-top: 4px; }
+.numeros .alerta dd { color: var(--vermelho); }
+
+/* Lista de progresso por treinamento (o destaque do dashboard) */
+.lista-progresso { list-style: none; margin: 0; padding: 0; }
+.lista-progresso li { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; align-items: center; padding: 12px 0; border-top: 1px solid var(--linha-suave); }
+.lista-progresso li:first-child { border-top: none; padding-top: 0; }
+.lista-progresso small { color: var(--tinta-suave); grid-column: 1; }
+.lista-progresso .medidor { grid-row: 1 / span 2; grid-column: 2; }
+
+/* Barras horizontais simples (censo e departamentos) */
+.barras { display: grid; gap: 10px; }
+.barras-linha { display: grid; grid-template-columns: 140px 1fr 28px; align-items: center; gap: 12px; }
+.barras-trilho { background: var(--linha-suave); height: 10px; border-radius: 2px; }
+.barras-valor { background: var(--azul); height: 100%; border-radius: 2px; }
+.barras-numero { text-align: right; font-weight: 700; }
+
+.lista-simples { list-style: none; margin: 0; padding: 0; }
+.lista-simples li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--linha-suave); }
+.lista-simples li:first-child { border-top: none; padding-top: 0; }
+.lista-simples small { color: var(--tinta-suave); display: block; }
+
+/* ============================== TABELAS ============================== */
+.filtros { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.filtros input, .filtros select { width: auto; min-width: 200px; }
+.filtros input[type=search] { min-width: 320px; }
+.tabela { width: 100%; border-collapse: collapse; }
+.tabela th { text-align: left; font-size: 14px; color: var(--tinta-suave); padding: 12px 18px; border-bottom: 1px solid var(--linha); white-space: nowrap; }
+.tabela td { padding: 13px 18px; border-bottom: 1px solid var(--linha-suave); vertical-align: middle; }
+.tabela tr:last-child td { border-bottom: none; }
+.tabela tbody tr:hover { background: #f7f8fa; }
+.tabela td small { color: var(--tinta-suave); display: block; }
+.tabela.compacta th, .tabela.compacta td { padding: 9px 8px; }
+.tabela .acoes { display: flex; gap: 16px; }
+.vazio { text-align: center; color: var(--tinta-suave); padding: 32px !important; }
+
+/* ===================== ETIQUETAS DE SITUAÇÃO =====================
+   Retangulares e discretas; a cor indica a situação. */
+.etiqueta { display: inline-block; font-size: 13px; font-weight: 700; padding: 2px 8px; border-radius: 3px; background: var(--cinza-claro); color: var(--cinza); white-space: nowrap; }
+.etiqueta-Ativo, .etiqueta-Concluido, .etiqueta-Realizada { background: var(--verde-claro); color: var(--verde); }
+.etiqueta-EmAndamento, .etiqueta-Planejada { background: var(--azul-claro); color: var(--azul); }
+.etiqueta-Pendente, .etiqueta-Afastado { background: var(--ambar-claro); color: var(--ambar); }
+.etiqueta-Inativo, .etiqueta-Cancelada { background: var(--cinza-claro); color: var(--cinza); }
+/* Perfil não é situação: fica só com contorno */
+.perfil { display: inline-block; font-size: 13px; padding: 1px 8px; border: 1px solid var(--linha); border-radius: 3px; color: var(--tinta); }
+
+/* ======================= DIVERSIDADE E INCLUSÃO ======================= */
+.base-legal { margin-bottom: 24px; }
+.base-legal dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; margin: 0; }
+.base-legal dt { font-weight: 700; }
+.base-legal dd { margin: 0; color: var(--tinta-suave); }
+.abas { display: flex; gap: 28px; border-bottom: 1px solid var(--linha); margin-bottom: 20px; }
+.aba { font: inherit; background: none; border: none; padding: 10px 1px; color: var(--tinta-suave); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -1px; }
+.aba.ativa { color: var(--tinta); font-weight: 700; border-bottom-color: var(--tinta); }
+.materiais { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+.material { display: flex; flex-direction: column; gap: 8px; }
+.material h3 { font-size: 16px; }
+.material p { margin: 0; color: var(--tinta-suave); font-size: 14px; flex: 1; }
+.material .meta { font-size: 13px; color: var(--tinta-suave); }
+.material .rodape-material { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--linha-suave); padding-top: 12px; margin-top: 4px; }
+
+/* ========================== JANELA E AVISOS ========================== */
+.modal { position: fixed; inset: 0; background: rgba(24, 32, 46, .5); display: none; align-items: flex-start; justify-content: center; padding: 8vh 16px; z-index: 50; overflow-y: auto; }
+.modal.aberto { display: flex; }
+.modal-caixa { background: var(--papel); border-radius: 10px; width: 100%; max-width: 540px; border: 1px solid var(--linha); }
+.modal-caixa.largo { max-width: 800px; }
+.modal-topo { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px 0; }
+.modal-topo h2 { font-size: 19px; }
+.modal-corpo { padding: 18px 24px 6px; }
+.modal-corpo h3 { font-size: 16px; margin: 20px 0 8px; }
+.modal-rodape { display: flex; justify-content: flex-end; gap: 12px; padding: 16px 24px 20px; }
+.avisos { position: fixed; left: 24px; bottom: 24px; display: grid; gap: 8px; z-index: 60; }
+.aviso { background: var(--tinta); color: #fff; padding: 12px 16px 12px 14px; border-radius: 6px; max-width: 380px; border-left: 5px solid var(--verde); }
+.aviso-erro { border-left-color: #e05a4e; }
+
+/* ============================= RESPONSIVO ============================= */
+@media (max-width: 960px) {
+  .login { grid-template-columns: 1fr; gap: 32px; }
+  .barra-topo-conteudo { flex-wrap: wrap; gap: 12px 24px; padding: 12px 16px; }
+  .menu { order: 3; flex-basis: 100%; overflow-x: auto; padding-bottom: 6px; }
+  .principal { padding: 24px 16px 48px; }
+  .cabecalho-pagina { flex-direction: column; align-items: flex-start; }
+  .grade, .grade.metade, .colunas-2 { grid-template-columns: 1fr; }
+  .filtros input[type=search] { min-width: 100%; }
+  .tabela .acoes { flex-wrap: wrap; gap: 8px 16px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

@@ -1,0 +1,16 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Banco SQLite gerado ao rodar a API (é recriado com os dados de exemplo)
+*.db
+*.db-shm
+*.db-wal
+
+# Flutter
+mobile/pluralrh_app/.dart_tool/
+mobile/pluralrh_app/build/
+mobile/pluralrh_app/.flutter-plugins
+mobile/pluralrh_app/.flutter-plugins-dependencies

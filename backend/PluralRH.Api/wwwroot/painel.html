@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- [PESSOA 1] Painel web: estrutura do painel administrativo.
+     O conteúdo de cada tela é montado pelos arquivos da pasta js/paginas/. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PluralRH</title>
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header class="barra-topo">
+    <div class="barra-topo-conteudo">
+      <a class="marca" href="#dashboard">
+        <span class="medidor-blocos" aria-hidden="true"><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i></i><i></i><i></i></span>
+        PluralRH
+      </a>
+
+      <nav id="menu" class="menu" aria-label="Seções do painel">
+        <a href="#dashboard" data-pagina="dashboard">Dashboard</a>
+        <a href="#funcionarios" data-pagina="funcionarios">Funcionários</a>
+        <a href="#usuarios" data-pagina="usuarios" data-perfil="Admin">Usuários</a>
+        <a href="#treinamentos" data-pagina="treinamentos">Treinamentos</a>
+        <a href="#participacoes" data-pagina="participacoes">Participações</a>
+        <a href="#diversidade" data-pagina="diversidade">Diversidade e inclusão</a>
+      </nav>
+
+      <div class="conta">
+        <div class="conta-nome"><strong id="usuario-nome"></strong><span id="usuario-tipo"></span></div>
+        <button id="btn-sair" class="botao botao-secundario" type="button">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="principal">
+    <header class="cabecalho-pagina">
+      <div>
+        <h1 id="titulo-pagina"></h1>
+        <p id="subtitulo-pagina"></p>
+      </div>
+      <div id="acao-pagina"></div>
+    </header>
+    <section id="conteudo"></section>
+  </main>
+
+  <div id="modal" class="modal"></div>
+  <div id="avisos" class="avisos" aria-live="polite"></div>
+
+  <script type="module" src="js/painel.js"></script>
+</body>
+</html>

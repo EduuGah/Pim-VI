@@ -1,0 +1,34 @@
+# [PESSOA 3] Flutter: dependências do app mobile
+name: pluralrh_app
+description: App mobile do PluralRH, a área do funcionário (PIM VI).
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Consumo da API REST (GET, POST, PUT)
+  http: ^1.2.0
+  # Armazenamento local no aparelho (sessão, cache e fila offline)
+  shared_preferences: ^2.2.0
+  # Ícones padrão do Flutter (evita aviso no build)
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Atkinson Hyperlegible: fonte do Braille Institute para leitores com baixa visão (licença OFL)
+  fonts:
+    - family: AtkinsonHyperlegible
+      fonts:
+        - asset: assets/fonts/AtkinsonHyperlegible-Regular.ttf
+        - asset: assets/fonts/AtkinsonHyperlegible-Bold.ttf
+          weight: 700

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    [PESSOA 2] Projeto da CAMADA DE DADOS
+    Contém: Models (entidades), DbContext, configurações de relacionamento,
+    dados de exemplo (seed) e repositórios (CRUD).
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PluralRH.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Entity Framework Core usando SQLite: o banco é um único arquivo (pluralrh.db), sem instalar nada -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.*" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- [PESSOA 1] Painel web: tela de login (Admin e Gestor/RH) -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar | PluralRH</title>
+  <link rel="icon" href="img/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <main class="login">
+    <section class="login-form">
+      <span class="marca">
+        <span class="medidor-blocos" aria-hidden="true"><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i class="cheio"></i><i></i><i></i><i></i></span>
+        PluralRH
+      </span>
+
+      <h1>Entrar no painel</h1>
+      <p>Acesso para administração e RH. Funcionários acompanham os próprios treinamentos pelo aplicativo no celular.</p>
+
+      <form id="form-login" novalidate>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="botao botao-principal botao-largo" type="submit">Entrar</button>
+        <p id="erro-login" class="erro-form" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <aside class="login-exemplo" aria-labelledby="titulo-exemplo">
+      <h2 id="titulo-exemplo">O que o RH acompanha</h2>
+      <p>O progresso de cada pessoa em cada treinamento, atualizado pelo aplicativo.</p>
+      <ul id="exemplo-progresso"></ul>
+    </aside>
+
+    <footer class="login-rodape">PluralRH, projeto acadêmico do PIM VI (Projeto Integrado Multidisciplinar). Todos os dados são fictícios.</footer>
+  </main>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>
