@@ -20,7 +20,7 @@ Tempo total na primeira vez: de 30 a 60 minutos, a maior parte esperando downloa
 | Google Chrome | Abrir o painel e o app             | (provavelmente já tem) |
 | Flutter SDK   | Rodar o app                        | 1,8 GB para baixar, 3 GB instalado |
 
-Só vai mexer no painel web? Pode parar no passo 4 e não precisa do Flutter.
+Só quer ver o sistema funcionando? O passo 4 basta: ele abre o painel web **e** o app (em /app/), sem precisar do Flutter. O Flutter só é necessário para mexer no código do app.
 
 ---
 
@@ -125,6 +125,7 @@ Agora abra o navegador em **http://localhost:5080** e entre com um destes usuár
 
 Extras:
 
+- O app do funcionário também abre direto em **http://localhost:5080/app/** (entre como na.souza@pluralrh.com, senha Func@123). É uma cópia já compilada, então funciona sem instalar o Flutter.
 - A documentação da API (Swagger) fica em **http://localhost:5080/swagger**.
 - O banco de dados é o arquivo `backend/PluralRH.Api/pluralrh.db`, criado sozinho na primeira execução com os dados de exemplo.
 

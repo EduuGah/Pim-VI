@@ -1,0 +1,11 @@
+{
+  "services": {
+    "pluralrh": {
+      "root": "backend",
+      "runtime": "container"
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": { "service": "pluralrh" } }
+  ]
+}

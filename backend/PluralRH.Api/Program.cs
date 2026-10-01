@@ -6,6 +6,7 @@
 //   3) definimos o PIPELINE HTTP (a ordem em que cada requisição é tratada).
 // -----------------------------------------------------------------------------
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.OpenApi.Models;
 using PluralRH.Api.Auth;
 using PluralRH.Api.Middlewares;
@@ -15,6 +16,12 @@ using PluralRH.Data.Context;
 using PluralRH.Data.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Hospedagem na nuvem (Vercel, Render, Railway...): a plataforma informa a porta
+// pela variável de ambiente PORT. No computador ela não existe e vale a porta 5080.
+var porta = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(porta))
+    builder.WebHost.UseUrls($"http://0.0.0.0:{porta}");
 
 // ---------------------------------------------------------------------------
 // 1) CAMADA DE DADOS (Pessoa 2): DbContext com SQLite + repositórios
@@ -105,7 +112,11 @@ app.UseMiddleware<TratamentoErrosMiddleware>(); // 1º: captura erros de tudo qu
 app.UseSwagger();
 app.UseSwaggerUI(c => c.DocumentTitle = "PluralRH API");
 app.UseDefaultFiles();                          // "/" abre wwwroot/index.html (login do painel)
-app.UseStaticFiles();                           // serve o painel web (HTML, CSS, JS)
+// Serve o painel web (HTML, CSS, JS) e o app Flutter compilado em /app.
+// O Flutter usa arquivos .frag (efeitos visuais) que o ASP.NET não conhece por padrão.
+var tiposDeArquivo = new FileExtensionContentTypeProvider();
+tiposDeArquivo.Mappings[".frag"] = "application/octet-stream";
+app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = tiposDeArquivo });
 app.UseCors();
 app.UseAuthentication();                        // lê e valida o token
 app.UseAuthorization();                         // confere os perfis exigidos

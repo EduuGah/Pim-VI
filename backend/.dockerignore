@@ -1,0 +1,8 @@
+# Arquivos que não entram no container (gerados no computador ou desnecessários)
+**/bin/
+**/obj/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+.vs/
+*.user

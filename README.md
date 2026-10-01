@@ -69,13 +69,17 @@ cd backend
 dotnet run --project PluralRH.Api
 ```
 
-Com a API rodando, abra **http://localhost:5080** (painel) ou **http://localhost:5080/swagger** (API). Em outro terminal:
+Com a API rodando, abra **http://localhost:5080** (painel), **http://localhost:5080/app/** (app, já compilado, sem precisar do Flutter) ou **http://localhost:5080/swagger** (API).
+
+Para rodar o app em modo de desenvolvimento, em outro terminal:
 
 ```bash
 cd mobile/pluralrh_app
 flutter pub get
 flutter run -d chrome
 ```
+
+Para publicar na internet com um único endereço (painel, app e API), veja **[docs/PUBLICAR_NA_VERCEL.md](docs/PUBLICAR_NA_VERCEL.md)**.
 
 ### Usuários de teste
 
@@ -90,7 +94,10 @@ flutter run -d chrome
 ## Estrutura do repositório
 
 ```
+vercel.json           publicação no Vercel (container)
+scripts/              gerar-app-web.ps1: compila o app e coloca em /app do painel
 backend/
+  Dockerfile          receita do container (Vercel, Render, Railway...)
   PluralRH.sln
   PluralRH.Api/       API REST, autenticação, regras do sistema e painel web (wwwroot)
   PluralRH.Data/      Entity Framework: models, relacionamentos, repositórios e dados de exemplo
@@ -98,6 +105,7 @@ mobile/
   pluralrh_app/       app Flutter do funcionário
 docs/
   COMO_RODAR.md       passo a passo para rodar o projeto
+  PUBLICAR_NA_VERCEL.md como colocar o sistema na internet
   API_ENDPOINTS.md    todas as rotas da API e quem pode usar cada uma
   GUIA_POR_PESSOA.md  o que cada integrante do grupo usa do projeto
   MAPA_DISCIPLINAS.md onde cada disciplina aparece no código

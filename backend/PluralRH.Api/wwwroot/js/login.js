@@ -36,7 +36,7 @@ form.addEventListener('submit', async (evento) => {
 
     // CONTROLE DE ACESSO: o painel web é para Admin e Gestor; funcionário usa o app
     if (resposta.usuario.tipo === 'Funcionario') {
-      erro.textContent = 'Seu perfil é de funcionário. Use o aplicativo PluralRH no celular.';
+      erro.textContent = 'Seu perfil é de funcionário. Use o aplicativo PluralRH (link logo abaixo).';
       return;
     }
 
